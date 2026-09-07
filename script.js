@@ -54,7 +54,6 @@ if (slides.length) {
 
     slides.forEach(slide => {
         slide.addEventListener("pointerdown", (event) => {
-        console.log(event.pointerType);
         startXmain = event.clientX;
     });
     });
@@ -334,7 +333,7 @@ function prevModalSlide() {
 
         modalImageItem.forEach(item => item.classList.remove('active'));
         modalImageItem[index].classList.add("active");
-        // modalImageItem[index].focus();
+        modalImageItem[index].focus();
     }
 
 
@@ -414,7 +413,7 @@ if (contactForm) {
 
     const formData = new FormData(contactForm);
 
-    try {
+    try { //this code might fail
       submitBtn.disabled = true; //The submit button is disabled while the form is being sent to prevent duplicate submissions.
 
       const response = await fetch(contactForm.action, {
@@ -425,7 +424,7 @@ if (contactForm) {
         }
       });
 
-      if (!response.ok) {
+      if (!response.ok) { //response object
         throw new Error('The form could not be sent.');
       }
 
@@ -434,10 +433,10 @@ if (contactForm) {
       formMessage.classList.add('success');
 
     } catch (error) {
-      console.error(error);
+      console.error(error.message);
       alert('Sorry, your message could not be sent. Please try again.');
 
-    } finally {
+    } finally { //runs no matter what
       submitBtn.disabled = false;//enables it again if the request fails and the form remains visible.
     }
   });
@@ -501,7 +500,7 @@ if(roleSection) {
                 roleSection.classList.add('appears');
             }
         });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.05 });
 
     observerRole.observe(roleSection);
 }
@@ -513,10 +512,13 @@ if(servicesSection) {
                 servicesSection.classList.add('appears');
             }
         });
-    }, { threshold: 0.3});
+    }, { threshold: 0.01});
 
-    observerServices.observe(servicesItem);
+    observerServices.observe(servicesSection);
 }
+
+
+
 
 if(mainPageGallery) {
     const observerGallery = new IntersectionObserver((entries) => {
@@ -525,7 +527,7 @@ if(mainPageGallery) {
                 mainPageGallery.classList.add('appears');
             }
         });
-    }, { threshold: 0.3});
+    }, { threshold: 0.05});
 
     observerGallery.observe(mainPageGalleryItem);
 }
@@ -537,7 +539,7 @@ if(reviewsSection) {
                 reviewsSection.classList.add('appears');
             }
         });
-    }, { threshold: 0.3});
+    }, { threshold: 0.05});
 
     observerReviews.observe(reviewsSection);
 }
@@ -550,7 +552,7 @@ if(contactSection) {
                 contactSection.classList.add('appears');
             }
         });
-    }, { threshold: 0.3});
+    }, { threshold: 0.05});
 
     observerContact.observe(contactSection);
 }
@@ -562,7 +564,7 @@ if(gallerySection) {
                 gallerySection.classList.add('appears');
             }
         });
-    }, { threshold: 0.3});
+    }, { threshold: 0.05});
 
     observerGallerySection.observe(gallerySection);
 }
@@ -574,7 +576,7 @@ if(videosSection) {
                 videosSection.classList.add('appears');
             }
         });
-    }, { threshold: 0.3});
+    }, { threshold: 0.05});
 
     observerVideos.observe(videosSection);
 }
