@@ -1024,17 +1024,23 @@ display:block;
     max-inline-size: 84rem;
     padding: 6rem 1rem;
     margin: 0 auto;
-    opacity: 0.3;
-    transform: translateY(7%);
-    transition: opacity 1.5s ease,transform 1s ease;
+
     /* border: 1px solid red; */
 }
 
-.gallery__container.appears{
+
+.gallery__animation{
+
+    opacity: 0.3;
+    transform: translateY(7%);
+    transition: opacity 1.5s ease, transform 1s ease;
+    /* border: 1px solid red; */
+}
+
+.gallery__animation.appears{
     opacity: 1;
     transform: translateY(0);
 }
-
 
 
 .gallery {
@@ -1230,6 +1236,9 @@ display:block;
 .modal__prev-btn:focus-visible {
     outline: 2px solid var(--white);
 }
+
+
+
 
 .videos{
     opacity: 0.3;

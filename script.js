@@ -463,7 +463,7 @@ const mainPageGallery = document.querySelector('.main-page__gallery__section');
 const mainPageGalleryItem = document.querySelector('.main-page__gallery__heading-container');
 const reviewsSection = document.querySelector('.reviews-section');
 const contactSection = document.querySelector('.contact-section');
-const gallerySection = document.querySelector('.gallery__container');
+const gallerySection = document.querySelector('.gallery__animation');
 const videosSection = document.querySelector('.videos');
 
 
