@@ -1,7 +1,9 @@
 
 # Larysa Robinson | Piano Teacher & Music Educator
 
-A responsive website for piano teacher and music educator Larysa Robinson**, designed to present her teaching experience, educational background, services, media, testimonials, and contact information.
+A responsive, multi-page website for Larysa Robinson, a piano teacher and music educator. The site introduces her teaching approach, presents lesson-related information, shares student and parent reviews, and gives prospective students a clear way to get in touch.
+
+This project was built with semantic HTML, custom CSS, and vanilla JavaScript. It focuses on a warm, polished visual identity, responsive layouts, and small interactions that make the site easy to explore on both desktop and mobile devices.
 
 This project is also my first portfolio project, built from scratch using vanilla HTML, CSS, and JavaScript.
 
@@ -17,36 +19,19 @@ The design focuses on a warm, elegant visual style while remaining responsive an
 
 ## Features
 
-- Responsive design for desktop, tablet, and mobile
-- Hero image carousel with:
-  - Previous/next controls
-  - Automatic slide changes
-  - Animated slide content
-- Responsive navigation
-- Mobile navigation menu
-- About section with teacher information and educational background
-- Piano and music theory lesson information
-- Personalized lesson descriptions
-- Performance preparation information
-- Image gallery
-- Full-screen image modal
-- Touch/pointer interaction for the gallery
-- Video gallery
-- Testimonials/reviews carousel
-- Contact form
-- Form submission through Formspree
-- Back-to-top button
-- CSS animations and transitions
-- Dark-themed form section
-- Responsive typography and layouts
-- Optimized WebP images
-- Semantic HTML structure
-- Accessibility considerations including:
-  - Appropriate semantic elements
-  - Button elements for interactive controls
-  - aria-live for dynamic content
-  - Keyboard/focus considerations
-  - Dialog-based image viewing
+- Responsive desktop and mobile layouts
+- Separate desktop and mobile navigation
+- Mobile menu that opens, closes, and closes after a navigation link is selected
+- Hero image slider that advances automatically every six seconds
+- Swipe support for the hero slider
+- Active navigation states based on the current page or section
+- Smooth back-to-top control
+- Main-page sections for Larysa's background, teaching role, services, gallery, reviews, and contact information
+- Dedicated photo-gallery page with an image modal
+- Gallery modal controls, thumbnail selection, outside-click closing, and swipe navigation
+- Automatically rotating student and parent reviews
+- Contact form submission feedback
+- Scroll-triggered content-reveal animations
 
 ## Technologies
 
@@ -78,93 +63,75 @@ piano-teacher-website/
 
 ## JavaScript Functionality
 
-JavaScript is used to provide interactive functionality throughout the website.
+The JavaScript file adds the site's interactive behavior while checking that optional page elements exist before using them. This allows shared code to run on pages that do not contain every feature.
 
-### Hero Carousel
+### Navigation
 
-The homepage includes an image carousel with manual navigation and automatic slide changes.
+- Opens and closes the mobile navigation menu
+- Applies an 'active' class to desktop and mobile links for the current page or hash-linked section
+- Updates active navigation links when the URL hash changes
 
-The carousel keeps track of the current slide and dynamically changes which slide is displayed.
+### Sliders and carousels
 
-It also resets CSS animation classes so that the text animation can play again when a slide becomes active.
+- The hero slider cycles through slides every six seconds
+- Hero slides can also be changed with horizontal swipe gestures
+- The reviews track moves horizontally and rotates through four review panels every seven seconds
 
-### Mobile Navigation
+### Gallery modal
 
-The mobile navigation menu is controlled with JavaScript and CSS transitions.
+- Opens the selected gallery image in a modal
+- Keeps the selected modal slide and thumbnail in sync
+- Supports previous/next controls and horizontal swiping
+- Closes from the close control or when the backdrop is selected
+- Adds a touch-specific visual state to gallery controls
 
-The menu can be opened and closed without relying on inline HTML event handlers.
+### Contact form
 
-### Image Gallery
+The form submission is handled asynchronously with 'fetch()':
 
-The gallery uses JavaScript to open images in a modal view.
+1. Prevents the browser's default form submission.
+2. Disables the submit button while the request is in progress.
+3. Sends the form data to the form's configured 'action' URL.
+4. Resets and hides the form after a successful response, then shows a success message.
+5. Re-enables the button and alerts the visitor if the request cannot be sent.
 
-Pointer events are also used to support swipe-style interaction on touch devices.
+### Scroll effects
 
-### Reviews Carousel
+'IntersectionObserver' is used to add an 'appears' class as sections enter the viewport. This supports reveal animations without continuously running animation logic during scrolling.
 
-Testimonials are displayed using a rotating carousel that automatically changes the visible review.
+## Design Notes
 
-### Back-to-Top Button
+The visual system uses locally hosted web fonts and CSS custom properties for reusable colors. Typography combines:
 
-The back-to-top button appears after the user scrolls down the page and allows the user to return to the top smoothly.
+- **Playfair Display** for expressive display typography
+- **DM Sans** for clear interface and body copy
+- **EB Garamond** for a more literary serif accent
 
-### Scroll-Based Animations
+The CSS also includes a dark-color preference through 'prefers-color-scheme', allowing core color variables to adapt to a visitor's system setting.
 
-IntersectionObserver is used to trigger animations when selected sections enter the viewport.
+## Responsive and Accessibility Considerations
 
-## Responsive Design
+- Desktop and mobile navigation are provided as separate experiences.
+- Pointer events support mouse, touch, and pen interactions for slider and gallery gestures.
+- Images include alternative text and explicit dimensions.
+- Sections use labels to make their purpose clearer to assistive technology.
+- Decorative quotation marks are hidden from assistive technology.
+- Modal thumbnails receive focus when selected, helping keep the current gallery item clear for keyboard users.
+- Local fonts use 'font-display: swap' so text remains visible while fonts load.
 
-The website was designed and tested across different screen sizes, including mobile devices, tablets, and desktop screens.
+## Project Structure
 
-Particular attention was given to:
+text
+.
+├── index.html
+├── photo_gallery.html
+├── [stylesheet].css
+├── [script].js
+└── assets/
+    ├── fonts/
+    └── images_mom/
 
-- Small mobile screens
-- iPhone layouts
-- Navigation behavior
-- Image cropping
-- Hero section height
-- Touch interactions
-- Modal scrolling
-- Responsive typography
-- Desktop/mobile layout changes
-
-## Accessibility
-
-Accessibility was considered throughout the project.
-
-Examples include:
-
-- Semantic HTML elements
-- Descriptive image alt attributes
-- Buttons for interactive controls
-- Visible focus states
-- aria-live for changing carousel/review content
-- Keyboard-friendly interactive elements
-- Dialog element for the image modal
-
-## Image Optimization
-
-Large source images were cropped and resized before being used on the website.
-
-Images are served in modern **WebP** format where appropriate to reduce file size and improve page loading performance.
-
-Explicit image dimensions are also provided where appropriate to help the browser determine image layout before the images finish loading.
-
-## Contact Form
-
-The contact form allows visitors to submit:
-
-- Name
-- Email
-- Message
-
-Form submissions are handled through Formspree, so the website does not require its own backend server for contact messages.
-
-## Design
-
-The visual design uses a warm, elegant aesthetic inspired by the subject of classical piano and music education.
-
-The project uses custom fonts, CSS variables, responsive layouts, image overlays, gradients, animations, and carefully selected colors to create a consistent visual identity.
+The exact stylesheet and script filenames can be substituted for the bracketed names above if they differ in your project.
 
 ## What I Learned
 
