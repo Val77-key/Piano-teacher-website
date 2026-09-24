@@ -11,6 +11,10 @@ This project is also my first portfolio project, built from scratch using vanill
 
 https://www.larysarobinsonpiano.com/
 
+## Source code
+
+github.com/Val77-key/Piano-teacher-website
+
 ## Overview
 
 The website provides prospective students and families with information about Larysa's teaching approach, qualifications, lessons, and experience.
@@ -119,19 +123,6 @@ The CSS also includes a dark-color preference through 'prefers-color-scheme', al
 - Modal thumbnails receive focus when selected, helping keep the current gallery item clear for keyboard users.
 - Local fonts use 'font-display: swap' so text remains visible while fonts load.
 
-## Project Structure
-
-text
-.
-├── index.html
-├── photo_gallery.html
-├── [stylesheet].css
-├── [script].js
-└── assets/
-    ├── fonts/
-    └── images_mom/
-
-The exact stylesheet and script filenames can be substituted for the bracketed names above if they differ in your project.
 
 ## What I Learned
 
