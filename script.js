@@ -388,7 +388,7 @@ function nextReview() {
 }
 
 
-setInterval(nextReview, 5000);
+setInterval(nextReview, 7000);
 
 
 }
@@ -398,9 +398,6 @@ setInterval(nextReview, 5000);
 
 
 //handles form submition
-
-
-
 
 const contactForm = document.querySelector('.contact__form');
 const formMessage = document.querySelector('.form__message');
@@ -424,7 +421,7 @@ if (contactForm) {
         }
       });
 
-      if (!response.ok) { //response object
+      if (!response.ok) { //HTTP error check
         throw new Error('The form could not be sent.');
       }
 
@@ -432,10 +429,9 @@ if (contactForm) {
       contactForm.classList.add('close');
       formMessage.classList.add('success');
 
-    } catch (error) {
+    } catch (error) { //Network error check
       console.error(error.message);
-      alert('Sorry, your message could not be sent. Please try again.');
-
+      alert('The form could not be sent. Please, try again');
     } finally { //runs no matter what
       submitBtn.disabled = false;//enables it again if the request fails and the form remains visible.
     }
@@ -447,18 +443,15 @@ if (contactForm) {
 
 
 
-
-
-
-
 //intersectionObserver content animation logic
+
+
 
 const aboutSection = document.querySelector('.about-section');
 const aboutImageContainer = document.querySelector('.about__image-container');
 const aboutContent = document.querySelector('.about__content');
 const roleSection = document.querySelector('.role');
 const servicesSection = document.querySelector('.services-section');
-const servicesItem = document.querySelector('.services__grid-item');
 const mainPageGallery = document.querySelector('.main-page__gallery__section');
 const mainPageGalleryItem = document.querySelector('.main-page__gallery__heading-container');
 const reviewsSection = document.querySelector('.reviews-section');
@@ -468,115 +461,34 @@ const videosSection = document.querySelector('.videos');
 
 
 
-if(aboutSection) {
+
+function appearOnScroll(element, threshold = 0.2, trigger = element) {
+    if (!element || !trigger) return;
+
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+        entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                aboutImageContainer.classList.add('appears');
+                element.classList.add('appears');
+                observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.2 });
+    }, { threshold });
 
-    observer.observe(aboutSection);
-}
-
-
-if(aboutContent) {
-    const observerContent = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                aboutContent.classList.add('appears');
-            }
-        });
-    }, { threshold: 0.3});
-
-    observerContent.observe(aboutContent);
-}
-
-if(roleSection) {
-    const observerRole = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                roleSection.classList.add('appears');
-            }
-        });
-    }, { threshold: 0.05 });
-
-    observerRole.observe(roleSection);
-}
-
-if(servicesSection) {
-    const observerServices = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                servicesSection.classList.add('appears');
-            }
-        });
-    }, { threshold: 0.01});
-
-    observerServices.observe(servicesSection);
+    observer.observe(trigger);
 }
 
 
 
-
-if(mainPageGallery) {
-    const observerGallery = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                mainPageGallery.classList.add('appears');
-            }
-        });
-    }, { threshold: 0.05});
-
-    observerGallery.observe(mainPageGalleryItem);
-}
-
-if(reviewsSection) {
-    const observerReviews = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                reviewsSection.classList.add('appears');
-            }
-        });
-    }, { threshold: 0.05});
-
-    observerReviews.observe(reviewsSection);
-}
+appearOnScroll(aboutImageContainer, 0.2, aboutSection);
+appearOnScroll(aboutContent, 0.3);
+appearOnScroll(roleSection, 0.05);
+appearOnScroll(servicesSection, 0.01);
+appearOnScroll(mainPageGallery, 0.05, mainPageGalleryItem);
+appearOnScroll(reviewsSection, 0.05);
+appearOnScroll(contactSection, 0.05);
+appearOnScroll(gallerySection, 0.05);
+appearOnScroll(videosSection, 0.05);
 
 
-if(contactSection) {
-    const observerContact = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                contactSection.classList.add('appears');
-            }
-        });
-    }, { threshold: 0.05});
 
-    observerContact.observe(contactSection);
-}
 
-if(gallerySection) {
-    const observerGallerySection = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                gallerySection.classList.add('appears');
-            }
-        });
-    }, { threshold: 0.05});
-
-    observerGallerySection.observe(gallerySection);
-}
-
-if(videosSection) {
-    const observerVideos = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                videosSection.classList.add('appears');
-            }
-        });
-    }, { threshold: 0.05});
-
-    observerVideos.observe(videosSection);
-}
