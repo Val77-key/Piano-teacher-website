@@ -388,7 +388,7 @@ function nextReview() {
 }
 
 
-setInterval(nextReview, 7000);
+setInterval(nextReview, 10000);
 
 
 }
